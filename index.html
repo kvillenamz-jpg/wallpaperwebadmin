@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despliegue de Fondos Corporativos</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">WP</div>
+                    <h2>WallDeploy</h2>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">Nueva Campaña</a>
+                <a href="#" class="nav-item">Historial</a>
+                <a href="#" class="nav-item">Ajustes</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">C</div>
+                    <div class="user-info">
+                        <span class="user-name">Comunicaciones</span>
+                        <span class="user-role">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <h1>Publicar Nueva Campaña</h1>
+                <p>Configura el fondo de escritorio y pantalla de bloqueo para los equipos corporativos.</p>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Upload Section -->
+                <section class="card upload-card glass-panel">
+                    <h3>1. Subir Imagen</h3>
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <p class="upload-text">Arrastra y suelta tu imagen aquí<br><span>o haz clic para explorar</span></p>
+                        <input type="file" id="fileInput" accept="image/png, image/jpeg" hidden>
+                        <img id="previewImage" class="preview-image hidden" alt="Vista previa">
+                    </div>
+                </section>
+
+                <!-- Configuration Section -->
+                <section class="card config-card glass-panel">
+                    <h3>2. Configuración</h3>
+                    <form id="campaignForm">
+                        <div class="form-group">
+                            <label for="applyTo">Aplicar a</label>
+                            <select id="applyTo" required>
+                                <option value="both">Escritorio y Pantalla de Bloqueo</option>
+                                <option value="desktop">Solo Fondo de Escritorio</option>
+                                <option value="lockscreen">Solo Pantalla de Bloqueo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="targetGroup">Grupo Objetivo</label>
+                            <select id="targetGroup" required>
+                                <option value="all">Todos los Empleados</option>
+                                <option value="sales">Ventas y Comercial</option>
+                                <option value="it">Tecnología (TI)</option>
+                                <option value="hr">Recursos Humanos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="startDate">Fecha de Inicio (Opcional)</label>
+                                <input type="date" id="startDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="endDate">Fecha de Fin (Opcional)</label>
+                                <input type="date" id="endDate">
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <button type="submit" class="btn btn-primary" id="publishBtn">
+                                <span>Publicar a Intune</span>
+                                <div class="loader hidden" id="btnLoader"></div>
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            
+            <!-- Toast Notification -->
+            <div id="toast" class="toast hidden">
+                <div class="toast-icon">✓</div>
+                <div class="toast-content">
+                    <h4>¡Éxito!</h4>
+                    <p>Políticas enviadas a los equipos correctamente.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
